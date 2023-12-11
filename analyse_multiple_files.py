@@ -7,6 +7,8 @@ import pytesseract
 from PIL import Image
 from pdf2image import convert_from_path
 
+import time
+
 pytesseract.pytesseract.tesseract_cmd = "tesseract"
 path_to_poppler_exe = Path("/opt/homebrew/Cellar/poppler/23.12.0/bin")
 
@@ -66,4 +68,18 @@ def process_pdf_files():
         tempdir.cleanup()
 
 if __name__ == "__main__":
+    start_time = time.time()
     process_pdf_files()
+    end_time = time.time()
+
+    print(f"Time taken: {end_time - start_time} seconds")
+
+
+# Test 1:
+#       Time taken: 311.5711169242859 seconds
+
+# Test 2:
+#       Time taken: 312.8736352920532 seconds
+
+# Test 3:
+#       Time taken: 321.8298580646515 seconds
